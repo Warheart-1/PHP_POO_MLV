@@ -1,5 +1,29 @@
-<?php require __DIR__ . '/templates/header.php'; ?>
-<h1>Articles</h1>
+<?php 
+    require __DIR__ . '/templates/header.php';
+    require __DIR__ . '/src/article_fn.php';
+    require __DIR__ . '/config.php';
+    $articles = getArticles($pdo);
+?>
+<h1>
+    Articles
+</h1>
+<?php foreach ($articles as $article) : ?>
+    <br>
+    <section>
+        <h2>
+            <?= $article['title'] ?>
+        </h2>
+        <br>
+        <p>
+            <?= $article['descrption'] ?>
+        </p>
+        <br>
+        <p>
+            <?= $article['content'] ?>
+        </p>
+    </section>
+<?php endforeach; ?>
+<br>    
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id
     placerat odio. Aliquam in eros id sem ultricies pharetra at eu
@@ -11,4 +35,3 @@
     facilisis sed. Sed cursus erat leo, nec adipiscing eros at.
 </p>
 <?php require __DIR__ . '/templates/footer.php'; ?>
-
